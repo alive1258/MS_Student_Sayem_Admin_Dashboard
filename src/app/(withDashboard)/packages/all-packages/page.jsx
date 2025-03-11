@@ -1,7 +1,11 @@
-import React from "react";
+import AllPackages from "@/components/Packages/AllPackages";
 
-const page = () => {
-  return <div>page</div>;
+const AllPackagesPage = () => {
+  return (
+    <>
+      <AllPackages />
+    </>
+  );
 };
 
-export default page;
+export default AllPackagesPage;

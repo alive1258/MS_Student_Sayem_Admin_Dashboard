@@ -30,7 +30,7 @@ export const axiosBaseQuery =
         // meta use pagination limit ,pageNumber,totalData
       });
 
-      console.log(result?.data);
+      console.log(result?.data, "result....");
 
       // Ensure to return only the data property
       return { data: result.data };

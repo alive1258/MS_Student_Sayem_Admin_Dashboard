@@ -20,6 +20,8 @@ const AllMembers = () => {
   });
   const [searchQuery, setSearchQuery] = useState("");
   const { data, error, isLoading } = useGetAllMembersQuery({});
+
+  // Delete member
   const [deleteMember] = useDeleteMemberMutation();
 
   const handleSearchChange = (e) => {
@@ -27,7 +29,7 @@ const AllMembers = () => {
   };
 
   // Filters companies based on the search query
-  const filteredData = data?.data;
+  const filteredData = data?.data?.data;
 
   const handleDeleteMember = async (member) => {
     try {
@@ -117,6 +119,7 @@ const AllMembers = () => {
               <thead>
                 <tr className="table_row">
                   <th className="table_th">ID</th>
+                  <th className="table_th">User Name</th>
                   <th className="table_th">Group Name</th>
                   <th className="table_th">Status</th>
                   <th className="table_th text-center">Action</th>
@@ -128,7 +131,10 @@ const AllMembers = () => {
                     <tr key={item.id} className="tbody_tr">
                       <td className="table_th">{index + 1}</td>
                       <td className="table_th">
-                        <p>{truncateCharacters(item?.name, 30)}</p>
+                        <p>{truncateCharacters(item?.user?.name, 30)}</p>
+                      </td>
+                      <td className="table_th">
+                        <p>{truncateCharacters(item?.group?.name, 30)}</p>
                       </td>
                       <td className="table_th">
                         <p>{truncateCharacters(item?.status, 30)}</p>

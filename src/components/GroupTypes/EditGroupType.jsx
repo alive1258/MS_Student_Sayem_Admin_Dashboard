@@ -75,7 +75,7 @@ const EditGroupType = ({ id }) => {
       </div>
 
       <div className="add_form_section">
-        <h1 className="add_section_title">Edit Mobile Bank Step by Step</h1>
+        <h1 className="add_section_title">Edit Group Type Step by Step</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
           <div className="grid sm:grid-cols-1 gap-5">
             <Input

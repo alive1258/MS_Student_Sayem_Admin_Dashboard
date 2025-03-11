@@ -1,7 +1,11 @@
-import React from "react";
+import AddPackage from "@/components/Packages/AddPackage";
 
 const page = () => {
-  return <div>page</div>;
+  return (
+    <>
+      <AddPackage />
+    </>
+  );
 };
 
 export default page;

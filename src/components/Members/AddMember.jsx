@@ -5,11 +5,10 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import SectionTitle from "../common/PosSectionTitle/PosSectionTitle";
 import Input from "../common/Forms/Input";
-import { useGetAllGroupTypesQuery } from "@/redux/api/groupTypesApi";
 import SelectAndSearch from "../common/SelectAndSearch/SelectAndSearch";
-import FcDatePicker from "../common/FcDatePicker/FcDatePicker";
 import { useCreateMembersMutation } from "@/redux/api/membersApi";
 import { useGetAllGroupsQuery } from "@/redux/api/groupsApi";
+import { useGetAllUsersQuery } from "@/redux/api/userApi";
 
 const AddMember = () => {
   const {
@@ -22,8 +21,11 @@ const AddMember = () => {
 
   const [createGroup, { isLoading }] = useCreateMembersMutation();
 
+  const { data: allUsersData } = useGetAllUsersQuery({});
+  const users = allUsersData?.data?.data;
+
   const router = useRouter();
-  const propertiesToRemove = ["group_name"];
+  const propertiesToRemove = ["group_name", "user_name"];
 
   // Extract company data
   const { data: groupData } = useGetAllGroupsQuery({});
@@ -35,14 +37,9 @@ const AddMember = () => {
       delete data[property];
     });
 
-    // Ensure data is in the correct format
-    const formattedData = {
-      ...data,
-    };
-
     try {
       // Make API request to create designation
-      const res = await createGroup(formattedData).unwrap(); // Pass formattedData directly
+      const res = await createGroup(data).unwrap(); // Pass formattedData directly
       if (res?.success) {
         reset();
         router.back();
@@ -76,6 +73,21 @@ const AddMember = () => {
           <h1 className="add_section_title">Create Member Step by Step</h1>
           <form onSubmit={handleSubmit(onSubmit)} className="my-5">
             <div className="grid sm:grid-cols-1  items-start  gap-2">
+              <SelectAndSearch
+                options={users?.map((user) => ({
+                  id: user?.id,
+                  name: user?.name,
+                }))}
+                type_id={"user_id"}
+                type_name={"user_name"}
+                label="Select User "
+                placeholder="Select a User "
+                register={register}
+                required={true}
+                setValue={setValue}
+                errors={errors}
+                message={"User  is required"}
+              />
               <SelectAndSearch
                 options={groupsData?.map((type) => ({
                   id: type?.id,

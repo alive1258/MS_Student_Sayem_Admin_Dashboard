@@ -5,35 +5,35 @@ import React, { useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import Swal from "sweetalert2";
 import SectionTitle from "../common/PosSectionTitle/PosSectionTitle";
-import {
-  useDeleteGroupMutation,
-  useGetAllGroupsQuery,
-} from "@/redux/api/groupsApi";
 import TableSkeleton from "../common/Loading/TableSkeleton";
 import SectionEditIcon from "../common/SectionEditIcon/SectionEditIcon";
 import SectionDeleteIcon from "../common/SectionDeleteIcon/SectionDeleteIcon";
 import { truncateCharacters } from "@/utils/descriptionTextCounter";
+import {
+  useDeletePackageMutation,
+  useGetAllPackagesQuery,
+} from "@/redux/api/packagesApi";
 
-const AllGroups = () => {
+const AllPackages = () => {
   const [searchValue, setSearchValue] = useState({
     search: "",
   });
   const [searchQuery, setSearchQuery] = useState("");
-  const { data, error, isLoading } = useGetAllGroupsQuery({});
-  const [deleteGroup] = useDeleteGroupMutation();
+  const { data, error, isLoading } = useGetAllPackagesQuery({});
+  const [deletePackage] = useDeletePackageMutation();
 
   const handleSearchChange = (e) => {
     setSearchValue({ ...searchValue, search: e.target.value });
   };
 
   // Filters companies based on the search query
-  const filteredData = data?.data;
+  const filteredData = data?.data?.data;
 
-  const handleDeleteGroup = async (group) => {
+  const handleDeletePackage = async (packages) => {
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
-        text: `Are you sure you want to delete the Group  "${group?.name}"?`,
+        text: `Are you sure you want to delete the Package  "${packages?.name}"?`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -41,11 +41,11 @@ const AllGroups = () => {
         confirmButtonText: "Yes, delete it!",
       });
       if (result.isConfirmed) {
-        const response = await deleteGroup(group?.id).unwrap();
+        const response = await deletePackage(packages?.id).unwrap();
         if (response?.success) {
           Swal.fire({
             title: "Deleted!",
-            text: `The Group "${group?.name}" has been successfully deleted.`,
+            text: `The Package "${packages?.name}" has been successfully deleted.`,
             icon: "success",
           });
         } else {
@@ -84,11 +84,11 @@ const AllGroups = () => {
       <div className="flex items-center justify-between space-x-4">
         <div className="px-2 md:px-5">
           <SectionTitle
-            big_title={"All Group "}
+            big_title={"All Package "}
             link_one={"/"}
-            link_tow={"/groups/add-groups"}
+            link_tow={"/packages/add-package"}
             title_one={"Home"}
-            title_two={"Make Group "}
+            title_two={"Make Package "}
           />
         </div>
         {/* Search input with icon */}
@@ -103,24 +103,29 @@ const AllGroups = () => {
               className="bg-[#14151A] border border-[#26272F] rounded-md py-2 pl-10 pr-4 focus:outline-none focus:ring-1 focus:ring-blue-500 w-full"
             />
           </div>
-          {/* Link to create a new Group  */}
-          <Link href="/groups/add-group">
-            <button className="btn w-64">Add Group </button>
+          {/* Link to create a new Package  */}
+          <Link href="/packages/add-package">
+            <button className="btn w-64">Add Package </button>
           </Link>
         </div>
       </div>
       <div className="mx-auto w-full pt-4">
         <div className="overflow-x-auto w-full">
-          <h1 className="table_header">All Group</h1>
+          <h1 className="table_header">All Package</h1>
           <div className="table_section">
             <table className="w-full">
               <thead>
                 <tr className="table_row">
                   <th className="table_th">ID</th>
-                  <th className="table_th">Group Name</th>
-                  <th className="table_th">Group Type</th>
-                  <th className="table_th">Check In Time</th>
-                  <th className="table_th">Check Out Time</th>
+                  <th className="table_th">Package Name</th>
+                  <th className="table_th">package_type</th>
+                  <th className="table_th">point</th>
+                  <th className="table_th">family_group</th>
+                  <th className="table_th">circle_group</th>
+                  <th className="table_th">family_group_member</th>
+                  <th className="table_th">circle_group_member</th>
+                  <th className="table_th">wywtm_member</th>
+
                   <th className="table_th text-center">Action</th>
                 </tr>
               </thead>
@@ -133,22 +138,34 @@ const AllGroups = () => {
                         <p>{truncateCharacters(item?.name, 30)}</p>
                       </td>
                       <td className="table_th">
-                        <p>{truncateCharacters(item?.group_type?.name, 30)}</p>
+                        <p>{truncateCharacters(item?.package_type, 30)}</p>
                       </td>
                       <td className="table_th">
-                        <p>{item?.check_in_time} am</p>
+                        <p>{item?.point}</p>
                       </td>
                       <td className="table_th">
-                        <p>{item?.check_out_time} pm</p>
+                        <p>{item?.family_group} </p>
+                      </td>
+                      <td className="table_th">
+                        <p>{item?.family_group_member} </p>
+                      </td>
+                      <td className="table_th">
+                        <p>{item?.family_group_member} </p>
+                      </td>
+                      <td className="table_th">
+                        <p>{item?.circle_group_member} </p>
+                      </td>
+                      <td className="table_th">
+                        <p>{item?.wywtm_member} </p>
                       </td>
 
                       <td className="my-2 px-4 text-center ">
                         <div className="flex items-center justify-center w-full gap-4">
                           <SectionEditIcon
-                            edit_link={`/groups/edit-group/${item?.id}`}
+                            edit_link={`/packages/edit-package/${item?.id}`}
                           />
                           <SectionDeleteIcon
-                            handleDelete={handleDeleteGroup}
+                            handleDelete={handleDeletePackage}
                             item={item}
                           />
                         </div>
@@ -175,4 +192,4 @@ const AllGroups = () => {
   );
 };
 
-export default AllGroups;
+export default AllPackages;
