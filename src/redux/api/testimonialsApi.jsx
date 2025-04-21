@@ -19,7 +19,7 @@ export const faqsApi = baseApi.injectEndpoints({
     // Query for fetching all testimonials
     getAllTestimonials: build.query({
       query: (arg) => ({
-        url: `${TESTIMONIALS_URL}`,
+        url: `${TESTIMONIALS_URL}/all-testimonials`,
         method: "GET",
         params: arg,
       }),

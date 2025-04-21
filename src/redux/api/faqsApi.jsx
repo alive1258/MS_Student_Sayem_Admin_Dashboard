@@ -19,7 +19,7 @@ export const faqsApi = baseApi.injectEndpoints({
     // Query for fetching all faqs
     getAllFaqs: build.query({
       query: (arg) => ({
-        url: `${FAQS_URL}`,
+        url: `${FAQS_URL}/all-faqs`,
         method: "GET",
         params: arg,
       }),
