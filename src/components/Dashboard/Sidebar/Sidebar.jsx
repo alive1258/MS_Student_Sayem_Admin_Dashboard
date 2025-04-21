@@ -50,7 +50,7 @@ const Sidebar = ({ sidebarRef, sidebarMobileStatus }) => {
                     // })
                   }
                 >
-                  <h2 className="logo">Findr Customer</h2>
+                  <h2 className="logo">Findr Admin</h2>
                 </Link>
                 <MdMenuOpen
                   onClick={() => dispatch(sidebarToggle())}

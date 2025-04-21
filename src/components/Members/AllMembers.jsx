@@ -8,7 +8,7 @@ import TableSkeleton from "../common/Loading/TableSkeleton";
 import { truncateCharacters } from "@/utils/descriptionTextCounter";
 import SectionDeleteIcon from "../common/SectionDeleteIcon/SectionDeleteIcon";
 import SectionEditIcon from "../common/SectionEditIcon/SectionEditIcon";
-import SectionTitle from "../common/PosSectionTitle/PosSectionTitle";
+import SectionTitle from "../common/SectionTitle/SectionTitle";
 import {
   useDeleteMemberMutation,
   useGetAllMembersQuery,

@@ -5,6 +5,9 @@ export const tagTypes = {
   groups: "groups",
   members: "members",
   packages: "packages",
+  faqs: "faqs",
+  faq_answers: "faq-ans",
+  testimonials: "testimonials",
 };
 
 export const tagTypesList = [
@@ -14,4 +17,7 @@ export const tagTypesList = [
   tagTypes.groups,
   tagTypes.members,
   tagTypes.packages,
+  tagTypes.faqs,
+  tagTypes.faq_answers,
+  tagTypes.testimonials,
 ];

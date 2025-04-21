@@ -19,7 +19,7 @@ export const packagesApi = baseApi.injectEndpoints({
     // Query for fetching all packages
     getAllPackages: build.query({
       query: (arg) => ({
-        url: `${PACKAGES_URL}`,
+        url: `${PACKAGES_URL}/all-packages`,
         method: "GET",
         params: arg,
       }),

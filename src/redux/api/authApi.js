@@ -54,6 +54,13 @@ const authApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.auth],
     }),
+    getMyProfile: builder.query({
+      query: () => ({
+        url: `${AUTH_URL}/get-me`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.auth],
+    }),
   }),
 });
 
@@ -64,4 +71,5 @@ export const {
   useResendOTPMutation,
   useVerifyOTPMutation,
   useResetPasswordMutation,
+  useGetMyProfileQuery,
 } = authApi;

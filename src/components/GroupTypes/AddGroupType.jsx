@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { useCreateGroupTypesMutation } from "@/redux/api/groupTypesApi";
-import SectionTitle from "../common/PosSectionTitle/PosSectionTitle";
+import SectionTitle from "../common/SectionTitle/SectionTitle";
 import Input from "../common/Forms/Input";
 
 const AddGroupType = () => {

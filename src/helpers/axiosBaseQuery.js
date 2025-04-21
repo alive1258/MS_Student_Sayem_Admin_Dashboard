@@ -30,13 +30,14 @@ export const axiosBaseQuery =
         // meta use pagination limit ,pageNumber,totalData
       });
 
-      console.log(result?.data, "result....");
-
       // Ensure to return only the data property
       return { data: result.data };
     } catch (axiosError) {
       console.log("axiosError", axiosError);
       const err = axiosError;
+      if (Array.isArray(err?.message)) {
+        err.message = err.message[0];
+      }
       // Return error response
       return {
         error: {

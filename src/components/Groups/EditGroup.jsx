@@ -8,7 +8,7 @@ import FcDatePicker from "../common/FcDatePicker/FcDatePicker";
 import { useGetSingleGroupQuery } from "@/redux/api/groupsApi"; // Ensure this hook is correctly imported
 import { useGetAllGroupTypesQuery } from "@/redux/api/groupTypesApi"; // Ensure this hook is correctly imported
 import TableSkeleton from "../common/Loading/TableSkeleton";
-import SectionTitle from "../common/PosSectionTitle/PosSectionTitle";
+import SectionTitle from "../common/SectionTitle/SectionTitle";
 import SelectAndSearch from "../common/SelectAndSearch/SelectAndSearch";
 import Input from "../common/Forms/Input";
 

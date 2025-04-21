@@ -28,7 +28,7 @@ const SignIn = () => {
       if (res?.success) {
         reset();
         dispatch(storeOTPData(res?.data));
-        router.push("/");
+        router.push("/otp");
         toast.success(res?.message || "Signed in successfully!", {
           position: toast.TOP_RIGHT,
         });
