@@ -1,50 +1,54 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import Link from "next/link";
-import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
+import {
+  useResetPasswordMutation,
+  useSignOutMutation,
+} from "@/redux/api/authApi";
 import { useRouter } from "next/navigation";
-import { ImSpinner10 } from "react-icons/im";
-import { useSignInMutation } from "@/redux/api/authApi";
-import { storeOTPData } from "@/redux/features/otpSlice";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import Input from "../common/Forms/Input";
+import FetchLoading from "../common/Loading/FetchLoading";
+import { passwordPattern } from "../common/patterns/patterns";
 
-const SignIn = () => {
-  const dispatch = useDispatch();
+const ResetPassword = () => {
   const router = useRouter();
+
   const {
     register,
+    watch,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
 
-  const [signIn, { isLoading }] = useSignInMutation();
+  const [resetPassword, { isLoading }] = useResetPasswordMutation();
+  const [signOut] = useSignOutMutation();
 
   const onSubmit = async (data) => {
     try {
-      const res = await signIn(data).unwrap();
+      const res = await resetPassword({
+        password: data?.password,
+      }).unwrap();
       if (res?.success) {
         reset();
-        dispatch(storeOTPData(res?.data));
-        router.push("/otp");
-        toast.success(res?.message || "Signed in successfully!", {
+        await signOut();
+        toast.success(res?.message || "Password reset successful!", {
           position: toast.TOP_RIGHT,
         });
+        router.push("/signin");
       }
       if (!res?.success) {
-        toast.error(res?.message || "Invalid email or password!", {
+        toast.error(res?.message || "Something Went wrong!", {
           position: toast.TOP_RIGHT,
         });
       }
     } catch (error) {
-      toast.error(error?.message || "Something went wrong. Please try again!", {
+      toast.error(error?.message || "Something Went wrong!", {
         position: toast.TOP_RIGHT,
       });
     }
   };
-
   return (
     <div
       className=" flex items-center justify-center h-screen bg-[#0D0E12]"
@@ -75,55 +79,40 @@ const SignIn = () => {
           <div className="absolute top-0 left-0 w-full h-[4px] animated-gradient"></div>
           <div>
             <h4 className="text-xl font-semibold border-0 border-b border-b-[#26272F] pb-2 text-gradient">
-              Login Now
+              Reset Your Password
             </h4>
 
             <form onSubmit={handleSubmit(onSubmit)} className="pt-4 space-y-2">
               <Input
-                placeholder="Enter your email"
-                text="email"
-                type="email"
-                label="Email"
+                placeholder="Enter your new password"
+                text="password"
+                type="password"
+                label="New Password"
                 register={register}
+                pattern={passwordPattern}
                 errors={errors}
               />
               <Input
+                placeholder="Re-enter your confirm password"
+                text="confirmPassword"
                 type="password"
-                placeholder="Enter your password"
-                text="password"
-                label="Password"
+                label="Re-Enter"
                 register={register}
                 errors={errors}
+                validate={(value) =>
+                  value === watch("password") || "Passwords do not match"
+                }
               />
-              <div className="flex items-center justify-end mt-3 px-[1px]">
-                <Link
-                  className="text-[16px] text-blue-base font-semibold"
-                  href="/forget-password"
-                >
-                  Forgot password?
-                </Link>
-              </div>
+
               <div className="text-center">
                 <button
                   className="mt-4 btn w-full cursor-pointer"
                   type="submit"
                 >
-                  {isLoading ? (
-                    <ImSpinner10 className="mx-auto w-5 h-5 animate-spin" />
-                  ) : (
-                    <span>Sign In</span>
-                  )}
+                  {isLoading ? <FetchLoading /> : <span>Submit</span>}
                 </button>
               </div>
             </form>
-          </div>
-          <div className="pt-6">
-            <p className="text-primary-muted">
-              <span className="text-blue-base text-[16px] font-semibold">
-                <Link href="/reset-password">Reset Password</Link>
-                {/* <Link href="/sign-up">Sign up here</Link> */}
-              </span>
-            </p>
           </div>
         </div>
       </div>
@@ -131,4 +120,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default ResetPassword;

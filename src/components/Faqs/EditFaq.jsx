@@ -45,13 +45,13 @@ const EditFaq = ({ id }) => {
     try {
       const formData = new FormData();
       formData.append("headline", data.headline);
-      // if (data.photo) {
-      //   formData.append("photo", data.photo);
-      // }
-
-      if (data.photo && data.photo.length > 0) {
-        formData.append("photo", data.photo[0]);
+      if (data.photo) {
+        formData.append("photo", data.photo);
       }
+
+      // if (data.photo && data.photo.length > 0) {
+      //   formData.append("photo", data.photo[0]);
+      // }
       const res = await updateFaq({ id, data: formData }).unwrap(); // ✅ FIXED
 
       if (res?.success) {

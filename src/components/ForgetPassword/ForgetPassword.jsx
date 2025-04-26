@@ -1,16 +1,15 @@
 "use client";
 
+import { useForgetPasswordMutation } from "@/redux/api/authApi";
+import { storeOTPData } from "@/redux/features/otpSlice";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
-import { ImSpinner10 } from "react-icons/im";
-import { useSignInMutation } from "@/redux/api/authApi";
-import { storeOTPData } from "@/redux/features/otpSlice";
 import Input from "../common/Forms/Input";
+import FetchLoading from "../common/Loading/FetchLoading";
 
-const SignIn = () => {
+const ForgetPassword = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const {
@@ -20,26 +19,32 @@ const SignIn = () => {
     reset,
   } = useForm();
 
-  const [signIn, { isLoading }] = useSignInMutation();
+  // call forget password api
+  const [forgetPassword, { isLoading }] = useForgetPasswordMutation();
+
+  // handle input data function
 
   const onSubmit = async (data) => {
     try {
-      const res = await signIn(data).unwrap();
+      const res = await forgetPassword(data).unwrap();
+
       if (res?.success) {
         reset();
+        // save user info into redux state
         dispatch(storeOTPData(res?.data));
-        router.push("/otp");
-        toast.success(res?.message || "Signed in successfully!", {
+
+        toast.success("Success! Please check your email.", {
           position: toast.TOP_RIGHT,
         });
+        router.push("/verify-otp");
       }
       if (!res?.success) {
-        toast.error(res?.message || "Invalid email or password!", {
+        toast.error(res?.message || "Something Went wrong!", {
           position: toast.TOP_RIGHT,
         });
       }
     } catch (error) {
-      toast.error(error?.message || "Something went wrong. Please try again!", {
+      toast.error(error?.message || "Something Went wrong!", {
         position: toast.TOP_RIGHT,
       });
     }
@@ -75,7 +80,7 @@ const SignIn = () => {
           <div className="absolute top-0 left-0 w-full h-[4px] animated-gradient"></div>
           <div>
             <h4 className="text-xl font-semibold border-0 border-b border-b-[#26272F] pb-2 text-gradient">
-              Login Now
+              Forget Password
             </h4>
 
             <form onSubmit={handleSubmit(onSubmit)} className="pt-4 space-y-2">
@@ -87,43 +92,16 @@ const SignIn = () => {
                 register={register}
                 errors={errors}
               />
-              <Input
-                type="password"
-                placeholder="Enter your password"
-                text="password"
-                label="Password"
-                register={register}
-                errors={errors}
-              />
-              <div className="flex items-center justify-end mt-3 px-[1px]">
-                <Link
-                  className="text-[16px] text-blue-base font-semibold"
-                  href="/forget-password"
-                >
-                  Forgot password?
-                </Link>
-              </div>
+
               <div className="text-center">
                 <button
                   className="mt-4 btn w-full cursor-pointer"
                   type="submit"
                 >
-                  {isLoading ? (
-                    <ImSpinner10 className="mx-auto w-5 h-5 animate-spin" />
-                  ) : (
-                    <span>Sign In</span>
-                  )}
+                  {isLoading ? <FetchLoading /> : <span>Submit</span>}
                 </button>
               </div>
             </form>
-          </div>
-          <div className="pt-6">
-            <p className="text-primary-muted">
-              <span className="text-blue-base text-[16px] font-semibold">
-                <Link href="/reset-password">Reset Password</Link>
-                {/* <Link href="/sign-up">Sign up here</Link> */}
-              </span>
-            </p>
           </div>
         </div>
       </div>
@@ -131,4 +109,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default ForgetPassword;
