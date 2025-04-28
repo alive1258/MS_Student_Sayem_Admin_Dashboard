@@ -28,8 +28,11 @@ const ResetPassword = () => {
   const onSubmit = async (data) => {
     try {
       const res = await resetPassword({
-        password: data?.password,
+        old_password: data.old_password,
+        new_password: data.new_password,
+        confirm_password: data.new_password,
       }).unwrap();
+
       if (res?.success) {
         reset();
         await signOut();
@@ -37,21 +40,21 @@ const ResetPassword = () => {
           position: toast.TOP_RIGHT,
         });
         router.push("/signin");
-      }
-      if (!res?.success) {
-        toast.error(res?.message || "Something Went wrong!", {
+      } else {
+        toast.error(res?.message || "Something went wrong!", {
           position: toast.TOP_RIGHT,
         });
       }
     } catch (error) {
-      toast.error(error?.message || "Something Went wrong!", {
+      toast.error(error?.message || "Something went wrong!", {
         position: toast.TOP_RIGHT,
       });
     }
   };
+
   return (
     <div
-      className=" flex items-center justify-center h-screen bg-[#0D0E12]"
+      className="flex items-center justify-center h-screen bg-[#0D0E12]"
       style={{
         backgroundImage: "url('/assets/images/signinBg.png')",
         backgroundSize: "cover",
@@ -61,15 +64,14 @@ const ResetPassword = () => {
         height: "60vh",
       }}
     >
-      {/* Background Blur Circle */}
       <div
-        className="absolute bottom-48  flex-shrink-0"
+        className="absolute bottom-48 flex-shrink-0"
         style={{
           width: "922.908px",
           height: "922.908px",
           borderRadius: "922.908px",
           opacity: 0.3,
-          backgroundColor: "#8AB8FB", // You can customize this color if needed
+          backgroundColor: "#8AB8FB",
           filter: "blur(250px)",
         }}
       ></div>
@@ -84,8 +86,17 @@ const ResetPassword = () => {
 
             <form onSubmit={handleSubmit(onSubmit)} className="pt-4 space-y-2">
               <Input
+                placeholder="Enter your Old password"
+                text="old_password"
+                type="password"
+                label="Old Password"
+                register={register}
+                pattern={passwordPattern}
+                errors={errors}
+              />
+              <Input
                 placeholder="Enter your new password"
-                text="password"
+                text="new_password"
                 type="password"
                 label="New Password"
                 register={register}
@@ -94,13 +105,14 @@ const ResetPassword = () => {
               />
               <Input
                 placeholder="Re-enter your confirm password"
-                text="confirmPassword"
+                text="confirm_password"
                 type="password"
-                label="Re-Enter"
+                label="Confirm Password"
                 register={register}
                 errors={errors}
+                required
                 validate={(value) =>
-                  value === watch("password") || "Passwords do not match"
+                  value === watch("new_password") || "Passwords do not match"
                 }
               />
 

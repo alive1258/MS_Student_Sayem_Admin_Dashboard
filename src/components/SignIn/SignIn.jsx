@@ -24,7 +24,11 @@ const SignIn = () => {
 
   const onSubmit = async (data) => {
     try {
-      const res = await signIn(data).unwrap();
+      const cleanedData = {
+        email: data.email.trim(), // Trim email
+        password: data.password.trim(), // Trim password
+      };
+      const res = await signIn(cleanedData).unwrap();
       if (res?.success) {
         reset();
         dispatch(storeOTPData(res?.data));
