@@ -163,7 +163,7 @@ const SelectAndSearch = ({
             </svg>
             {active && (
               <div
-                className={`absolute left-0 m-0 p-0  max-h-[220px] sidebarScroll overflow-y-auto rounded-lg w-full z-50 bg-neutral-muted border border-[#26272F] ${
+                className={`absolute left-0 m-0 p-0  max-h-[220px] sidebarScroll overflow-y-auto rounded-lg w-full z-50 bg-[#19191f] border border-[#26272F] ${
                   dropdownPosition === "up"
                     ? "bottom-[calc(100%+0px)]"
                     : "top-[calc(100%+0px)]"

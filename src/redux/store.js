@@ -12,10 +12,14 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: ["persist/PERSIST"],
-        ignoredActionPaths: ["register"],
-        ignoredPaths: ["register"],
-        serializableCheck: false,
+        ignoredActions: [
+          "persist/PERSIST",
+          "faqsApi/executeMutation/pending",
+          "faqsApi/executeMutation/fulfilled",
+          "faqsApi/executeMutation/rejected",
+        ],
+        ignoredActionPaths: ["meta.arg", "register"],
+        ignoredPaths: ["meta.arg.originalArgs", "register"],
       },
     }).concat(baseApi.middleware),
 });

@@ -3,7 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import SectionTitle from "../common/PosSectionTitle/PosSectionTitle";
+import SectionTitle from "../common/SectionTitle/SectionTitle";
 import Input from "../common/Forms/Input";
 import { useCreatePackagesMutation } from "@/redux/api/packagesApi";
 
@@ -36,7 +36,12 @@ const AddPackage = () => {
         circle_group_total_tracking: Number(data.circle_group_total_tracking),
         wywtm_total_tracking: Number(data.wywtm_total_tracking),
       };
-
+      if (Number(data.package_type) > 3) {
+        toast.error("Package type must not exceed 3", {
+          position: toast.TOP_RIGHT,
+        });
+        return; // stop the form submission
+      }
       const res = await createPackage(formattedData).unwrap();
       if (res?.success) {
         reset();
@@ -77,13 +82,33 @@ const AddPackage = () => {
                 register={register}
                 errors={errors}
               />
-              <Input
-                placeholder="Enter Package Type"
-                text="package_type"
-                label="Package Type"
-                register={register}
-                errors={errors}
-              />
+              <div className="mb-4">
+                <label className="block mb-1">Package Type</label>
+
+                <input
+                  type="number"
+                  className="input_style"
+                  placeholder="Enter Package Type"
+                  {...register("package_type", {
+                    required: "Package type is required",
+                    min: {
+                      value: 1,
+                      message: "@Min(1) — Package type must be at least 1",
+                    },
+                    max: {
+                      value: 3,
+                      message: "@Max(3) — Package type must not exceed 3",
+                    },
+                  })}
+                />
+
+                {errors?.package_type && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.package_type.message}
+                  </p>
+                )}
+              </div>
+
               <Input
                 placeholder="Enter Point"
                 text="point"

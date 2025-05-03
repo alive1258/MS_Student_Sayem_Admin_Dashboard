@@ -10,7 +10,6 @@ const otpSlice = createSlice({
   reducers: {
     storeOTPData: (state, action) => {
       state.otpData = action.payload;
-      console.log(action.payload, "action.payload...");
     },
     removeOtpData: (state) => {
       state.otpData = null;

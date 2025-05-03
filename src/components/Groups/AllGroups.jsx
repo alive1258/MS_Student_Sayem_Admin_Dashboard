@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import Swal from "sweetalert2";
-import SectionTitle from "../common/PosSectionTitle/PosSectionTitle";
+import SectionTitle from "../common/SectionTitle/SectionTitle";
 import {
   useDeleteGroupMutation,
   useGetAllGroupsQuery,

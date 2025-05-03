@@ -173,11 +173,11 @@
   }
 }
 
-/* .box {
+.box {
   position: relative;
 
   width: 100%;
-  height: 450px;
+  /* height: 500px; */
   background: #111217;
   text-align: center;
   border-radius: 10px;
@@ -187,19 +187,19 @@
   overflow: hidden;
   -ms-flex-align: center;
   align-content: center;
-} */
+}
 
-/* @property --angle {
+@property --angle {
   syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
-} */
+}
 
-/* .box::before {
+.box::before {
   content: "";
   position: absolute;
-  height: 100%;
-  width: 100%;
+  width: 200%;
+  height: 290%;
   background-image: conic-gradient(
     from var(--angle),
     #ff4545,
@@ -211,7 +211,7 @@
   top: 50%;
   left: 50%;
   translate: -50% -50%;
- 
+  /* z-index: -1; */
   padding: 3px;
   border-radius: 10px;
   animation: 3s spin linear infinite;
@@ -222,15 +222,15 @@
   background: #111217;
   inset: 5px;
   border-radius: 10px;
-} */
-/* @keyframes spin {
+}
+@keyframes spin {
   from {
     --angle: 0deg;
   }
   to {
     --angle: 360deg;
   }
-} */
+}
 .card-gradient {
   position: relative;
   width: 100%;

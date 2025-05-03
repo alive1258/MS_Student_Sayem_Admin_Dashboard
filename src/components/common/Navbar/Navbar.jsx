@@ -13,13 +13,13 @@ import { sidebarToggle } from "@/redux/features/adminSiteBerSlice";
 import MobileScreenProfileModal from "./MobileScreenProfileModal";
 import NavbarSearch from "./NavbarSearch";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   const [navbar, setNavbar] = useState(false);
   const { sidebarStatus } = useSelector((state) => state.adminTree);
   const dispatch = useDispatch();
   return (
     <>
-      <div className="w-full top-0 sticky z-[9999] border-b border-b-[#26272F] duration-300  transition-transform transform  bg-primary-base md:flex">
+      <div className="w-full top-0 sticky z-[500] border-b border-b-[#26272F] duration-300  transition-transform transform  bg-primary-base md:flex">
         <div className=" flex  w-full  items-center">
           {/* logo and sidebar handle icon  */}
 
@@ -82,7 +82,7 @@ const Navbar = () => {
                       </div>
                     </div>
                     {/* profile  */}
-                    <Profile />
+                    <Profile user={user} />
                   </div>
                 </div>
               </div>
@@ -91,7 +91,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className=" w-full overflow-hidden">
-        {navbar && <MobileScreenProfileModal />}
+        {navbar && <MobileScreenProfileModal user={user} />}
       </div>
     </>
   );

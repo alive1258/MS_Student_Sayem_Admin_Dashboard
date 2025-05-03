@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { useGetAllGroupsQuery } from "@/redux/api/groupsApi";
 import TableSkeleton from "../common/Loading/TableSkeleton";
-import SectionTitle from "../common/PosSectionTitle/PosSectionTitle";
+import SectionTitle from "../common/SectionTitle/SectionTitle";
 import SelectAndSearch from "../common/SelectAndSearch/SelectAndSearch";
 import Input from "../common/Forms/Input";
 import {

@@ -10,7 +10,7 @@ import {
   useUpdateGroupTypeMutation,
 } from "@/redux/api/groupTypesApi";
 import Input from "../common/Forms/Input";
-import SectionTitle from "../common/PosSectionTitle/PosSectionTitle";
+import SectionTitle from "../common/SectionTitle/SectionTitle";
 
 const EditGroupType = ({ id }) => {
   const {

@@ -10,7 +10,7 @@ import {
   useUpdateGroupTypeMutation,
 } from "@/redux/api/groupTypesApi";
 import Input from "../common/Forms/Input";
-import SectionTitle from "../common/PosSectionTitle/PosSectionTitle";
+import SectionTitle from "../common/SectionTitle/SectionTitle";
 import {
   useGetSinglePackageQuery,
   useUpdatePackageMutation,
@@ -80,6 +80,12 @@ const EditPackage = ({ id }) => {
         circle_group_total_tracking: Number(data.circle_group_total_tracking),
         wywtm_total_tracking: Number(data.wywtm_total_tracking),
       };
+      if (Number(data.package_type) > 3) {
+        toast.error("Package type must not exceed 3", {
+          position: toast.TOP_RIGHT,
+        });
+        return; // stop the form submission
+      }
       const res = await updatePackage({ id, data: updatedData }).unwrap();
 
       // const res = await updateGroupType({ id: id, data }).unwrap();

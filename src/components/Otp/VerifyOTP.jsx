@@ -25,14 +25,12 @@ const VerifyOTP = ({ redirectPath }) => {
   const { otpData } = useSelector((state) => state?.otpTree);
 
   const added_by = otpData?.id;
-  console.log(otpData, "otpData..............");
-  console.log(added_by, "added_by..............");
 
   const { data } = useGetSingleUserQuery(added_by, {
     skip: !added_by,
   });
-  console.log(data, "data............");
-  const mobile = data?.mobile;
+
+  const email = data?.email;
 
   const [verifyOTP, { isLoading }] = useVerifyOTPMutation();
 
@@ -47,18 +45,10 @@ const VerifyOTP = ({ redirectPath }) => {
 
         if (redirectPath) {
           router.push(redirectPath);
-        } else {
-          if (!res.data?.role_status) {
-            router.push("/");
-          } else {
-            if (!res.data?.company) {
-              router.push("/new-company-create");
-            } else if (!res.data?.branch) {
-              router.push("/new-branch-create");
-            } else {
-              router.push("/select-company-and-branch");
-            }
-          }
+        }
+
+        if (!res.data?.role_status) {
+          router.push("/");
         }
 
         toast.success("Singed is successful!", {
@@ -133,7 +123,7 @@ const VerifyOTP = ({ redirectPath }) => {
               </button>
             </div>
           </form>
-          <ResendOTP mobile={mobile} added_by={added_by} otpData={otpData} />
+          <ResendOTP email={email} added_by={added_by} otpData={otpData} />
         </div>
       </div>
     </div>

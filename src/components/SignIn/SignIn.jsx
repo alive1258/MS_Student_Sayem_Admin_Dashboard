@@ -24,11 +24,15 @@ const SignIn = () => {
 
   const onSubmit = async (data) => {
     try {
-      const res = await signIn(data).unwrap();
+      const cleanedData = {
+        email: data.email.trim(), // Trim email
+        password: data.password.trim(), // Trim password
+      };
+      const res = await signIn(cleanedData).unwrap();
       if (res?.success) {
         reset();
         dispatch(storeOTPData(res?.data));
-        router.push("/");
+        router.push("/otp");
         toast.success(res?.message || "Signed in successfully!", {
           position: toast.TOP_RIGHT,
         });
@@ -119,9 +123,9 @@ const SignIn = () => {
           </div>
           <div className="pt-6">
             <p className="text-primary-muted">
-              Do not have an account yet?{" "}
               <span className="text-blue-base text-[16px] font-semibold">
-                <Link href="/sign-up">Sign up here</Link>
+                <Link href="/reset-password">Reset Password</Link>
+                {/* <Link href="/sign-up">Sign up here</Link> */}
               </span>
             </p>
           </div>
