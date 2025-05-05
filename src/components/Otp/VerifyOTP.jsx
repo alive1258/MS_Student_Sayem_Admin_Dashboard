@@ -33,7 +33,7 @@ const VerifyOTP = ({ redirectPath }) => {
   const email = data?.email;
 
   const [verifyOTP, { isLoading }] = useVerifyOTPMutation();
-
+  //u
   const onSubmit = async (data) => {
     try {
       const res = await verifyOTP({
