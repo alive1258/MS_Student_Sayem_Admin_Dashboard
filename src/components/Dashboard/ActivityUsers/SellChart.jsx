@@ -9,7 +9,18 @@ const SellChart = () => {
         <div className="py-5 px-6 bg-[#111217] card-gradient rounded-lg">
           <div className="w-full">
             <div className="flex items-center justify-between space-x-6">
-              <h1 className="text-3xl font-bold">1,240 hrs</h1>
+              <h1
+                style={{
+                  background: "linear-gradient(to right, #3B82F6, #4F46E5)", // from-blue-500 to-indigo-600
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  fontSize: "1.875rem", // text-3xl
+                  fontWeight: "bold",
+                }}
+              >
+                1,240 hrs
+              </h1>
+
               <div className="bg-[#484949] py-1 px-4 flex items-center rounded-md">
                 <HiArrowSmUp className="text-[#41B3A2]" />
                 <p className="text-sm  font-semibold ml-1">+12%</p>
@@ -35,7 +46,18 @@ const SellChart = () => {
         <div className="py-5 px-6 bg-[#111217] card-gradient rounded-lg">
           <div className="w-full">
             <div className="flex items-center justify-between space-x-6">
-              <h1 className="text-3xl font-bold">6 Papers</h1>
+              <h1
+                style={{
+                  background: "linear-gradient(to right, #06B6D4, #3B82F6)", // cyan-500 to blue-500
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  fontSize: "1.875rem", // text-3xl
+                  fontWeight: "bold",
+                }}
+              >
+                6 Papers
+              </h1>
+
               <div className="bg-[#484949] py-1 px-4 flex items-center rounded-md">
                 <HiArrowSmUp className="text-[#41B3A2]" />
                 <p className="text-sm text-[#41B3A2] font-semibold ml-1">
@@ -63,7 +85,18 @@ const SellChart = () => {
         <div className="py-5 px-6 bg-[#111217] card-gradient rounded-lg">
           <div className="w-full">
             <div className="flex items-center justify-between space-x-6">
-              <h1 className="text-3xl font-bold">18 Experiments</h1>
+              <h1
+                style={{
+                  background: "linear-gradient(to right, #2563EB, #EC4899)", // from-blue-600 to-pink-500
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  fontSize: "1.875rem", // text-3xl
+                  fontWeight: "bold",
+                }}
+              >
+                18 Experiments
+              </h1>
+
               <div className="bg-[#484949] py-1 px-4 flex items-center rounded-md">
                 <HiArrowSmUp className="text-[#41B3A2]" />
                 <p className="text-sm text-[#41B3A2] font-semibold ml-1">+8%</p>

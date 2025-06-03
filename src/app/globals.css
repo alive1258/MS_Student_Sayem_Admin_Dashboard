@@ -350,7 +350,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  background: linear-gradient(90deg, #028ee6 0.32%, #d02be6 93.68%);
+  background: linear-gradient(to right, #2563eb, #ec4899);
+  /* background: linear-gradient(90deg, #028ee6 0.32%, #d02be6 93.68%); */
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
