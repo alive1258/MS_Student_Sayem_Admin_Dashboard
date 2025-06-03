@@ -1,10 +1,6 @@
 "use client";
-
-import { MdOutlineNightlight } from "react-icons/md";
 import { IoNotificationsOutline, IoClose } from "react-icons/io5";
 import { AiOutlineMessage } from "react-icons/ai";
-// import flags_us from "../../../app/assets/images/circle-flags_us-betsy-ross.png";
-import Image from "next/image";
 import Profile from "./Profile";
 import { useState } from "react";
 import MobileNavbar from "./MobileNavbar";
@@ -17,9 +13,10 @@ const Navbar = ({ user }) => {
   const [navbar, setNavbar] = useState(false);
   const { sidebarStatus } = useSelector((state) => state.adminTree);
   const dispatch = useDispatch();
+
   return (
     <>
-      <div className="w-full top-0 sticky z-[500] border-b border-b-[#26272F] duration-300  transition-transform transform  bg-primary-base md:flex">
+      <div className="w-full top-0 sticky z-[500] border-b border-b-[#26272F] duration-300  transition-transform transform  bg-[#0b0c10] md:flex">
         <div className=" flex  w-full  items-center">
           {/* logo and sidebar handle icon  */}
 
@@ -51,21 +48,20 @@ const Navbar = ({ user }) => {
 
               {/* notification message  and profile  */}
               <div className="flex justify-end ">
-                <div className=" flex justify-end    w-full ">
+                <div className=" flex justify-end  w-full ">
                   <div className="flex items-center gap-6">
                     {/* notification, message, country, mode   */}
                     <div className="flex items-center gap-4">
-                      <span className="size-10 rounded-full p-2 bg-black-base border border-[#26272F]">
-                        {/* <Image
-                          src={flags_us}
+                      {/* <span className="size-10 rounded-full p-2 bg-black-base border border-[#26272F]">
+                        <Image
+                          src={"/assets/images/flag.png"}
+                          className="flex justify-center items-center"
                           width={20}
                           height={20}
                           alt="flag"
-                        /> */}
-                      </span>
-                      <span className="size-10 rounded-full flex justify-center items-center border border-[#26272F] bg-black-base">
-                        <MdOutlineNightlight className="text-xl text-white/70" />
-                      </span>
+                        />
+                      </span> */}
+
                       {/* notification */}
                       <div className="relative size-10 border border-[#26272F] rounded-full flex justify-center items-center bg-black-base">
                         <IoNotificationsOutline className="text-xl text-white/70" />

@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSignOutMutation } from "@/redux/api/authApi";
-import { FcBusinessman } from "react-icons/fc";
+import Image from "next/image";
 
 const Profile = ({ user }) => {
   const router = useRouter();
@@ -15,6 +15,7 @@ const Profile = ({ user }) => {
   const handleProfileModal = () => {
     setActiveModal(!activeModal);
   };
+
   const handleLogout = async () => {
     try {
       const result = await Swal.fire({
@@ -64,7 +65,14 @@ const Profile = ({ user }) => {
         className="w-full min-w-[180px] cursor-pointer  relative   group flex items-center gap-2 justify-between"
       >
         <div className="flex items-center space-x-2">
-          <FcBusinessman className="text-3xl" />
+          {/* user?.photo  */}
+          <Image
+            src={"/assets/images/sayem.png"}
+            className="flex justify-center items-center"
+            width={36}
+            height={36}
+            alt="flag"
+          />
           <div className="">
             <h6 className="text-[15px] font-semibold text-primary-muted">
               {user?.name}

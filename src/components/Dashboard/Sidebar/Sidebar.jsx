@@ -36,21 +36,9 @@ const Sidebar = ({ sidebarRef, sidebarMobileStatus }) => {
           {!sidebarMobileStatus ? (
             <div className="border-b-[2px] border-[#131517] px-6 py-[26.5px]">
               <div className="flex items-center justify-between">
-                <Link
-                  href="/"
-                  onClick={
-                    () => dispatch()
-                    // addModule({
-                    //   module_id: 0,
-                    //   module_name: "Home module",
-
-                    //   module_description:
-                    //     "This module is designed to manage and track sales, inventory, and customer data.",
-                    //   module_icon: "/assets/images/pos.png",
-                    // })
-                  }
-                >
-                  <h2 className="logo">Findr Admin</h2>
+                <Link href="/">
+                  {/* <Link href="/" onClick={() => dispatch(sidebarToggle())}> */}
+                  <h2 className="logo">Abu Sayem Admin</h2>
                 </Link>
                 <MdMenuOpen
                   onClick={() => dispatch(sidebarToggle())}

@@ -4,7 +4,6 @@ import Footer from "@/components/common/Footer/Footer";
 import Navbar from "@/components/common/Navbar/Navbar";
 import Sidebar from "@/components/Dashboard/Sidebar/Sidebar";
 import { useGetMyProfileQuery } from "@/redux/api/authApi";
-
 import { sidebarMobileToggle } from "@/redux/features/adminSiteBerSlice";
 import { storeUser } from "@/redux/features/authSlice";
 import { useEffect, useRef } from "react";
@@ -18,6 +17,7 @@ const DashboardLayout = ({ children }) => {
   );
 
   const { user: userData } = useSelector((state) => state?.auth);
+
   // get my information
   const { data: myInfo } = useGetMyProfileQuery();
   const user = myInfo?.data?.user;

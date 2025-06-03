@@ -8,6 +8,9 @@ import Students from "@/components/Dashboard/Students/Students";
 export default function Home() {
   return (
     <div className="p-4">
+      <div className="mt-5">
+        <ShortOverview />
+      </div>
       <div className="flex flex-col md:flex-row gap-5 mt-5">
         <div className="w-full">
           <EarningData />
@@ -22,9 +25,7 @@ export default function Home() {
       <div className="mt-5">
         <ActivityUsers />
       </div>
-      <div className="mt-5">
-        <ShortOverview />
-      </div>
+
       <div className="mt-5">
         <SellChart />
       </div>
