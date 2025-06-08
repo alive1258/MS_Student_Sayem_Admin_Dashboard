@@ -10,7 +10,9 @@ const OverviewCard = ({
   color,
 }) => {
   return (
-    <div className="relative bg-[#111217] border border-[#26272F] rounded-lg pl-5 pr-6 py-2.5 flex items-center justify-between overflow-hidden">
+    <div
+      className={` relative cursor-pointer  bg-[#111217]  border border-[#26272F] rounded-lg pl-5 pr-6 py-2.5 flex items-center justify-between overflow-hidden`}
+    >
       {/* Top gradient border */}
       <div
         className={`absolute top-0 left-1/2 transform -translate-x-1/2 w-1/2 h-[2px] bg-gradient-to-r ${gradient}`}

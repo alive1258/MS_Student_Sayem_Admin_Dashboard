@@ -44,7 +44,7 @@ const FileInput = ({
 
         {/* Input file */}
         <div className="relative border border-[#26272F] focus:border focus:border-[#26272F] bg-[#19191F] px-2 py-2 rounded-lg">
-          <label className="text-sm text-gray-400 cursor-pointer">
+          <label className="text-sm text-gray-400">
             {selectedFile
               ? selectedFile.name?.slice(0, 25)
               : placeholder || "Choose File"}

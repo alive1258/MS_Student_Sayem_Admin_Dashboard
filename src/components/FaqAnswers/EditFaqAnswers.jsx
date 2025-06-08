@@ -44,6 +44,7 @@ const EditFaqAnswers = ({ id }) => {
         setValue("faq_id", faq?.id);
         setValue("faq_name", faq?.headline);
       }
+
       setValue("question", faqAnsData.data.question || "");
       setValue("answer", faqAnsData.data.answer || "");
     }

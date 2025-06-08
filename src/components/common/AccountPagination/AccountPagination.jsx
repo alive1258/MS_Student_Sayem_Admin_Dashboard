@@ -37,7 +37,7 @@ const AccountPagination = ({
         <p className="text-sm">Rows per page</p>
         <input
           onChange={(e) => handleEntityChange(e.target.value)}
-          className="input_style w-16 appearance-none hide-number-arrows text-center"
+          className="input_style w-16 appearance-none hide-number-arrows p-1 text-center"
           type="number"
           min={1}
           defaultValue={limit}
@@ -55,7 +55,7 @@ const AccountPagination = ({
         activeClassName="outline-[1px] outline-gray-600  text-white bg-blue-500 hover:bg-blue-600"
         previousLabel={
           <div
-            className={`opacity-50 flex items-center justify-center w-8 h-8 rounded-md text-lg border border-gray-500 dark:text-white hover:bg-gray-300 dark:hover:bg-primary-base duration-200 ${
+            className={`opacity-50 flex  items-center justify-center w-8 h-8 rounded-md text-lg border border-gray-500 dark:text-white hover:bg-gray-300 dark:hover:bg-primary-base duration-200 ${
               searchValue?.page === 1
                 ? "opacity-40 cursor-not-allowed"
                 : "hover:opacity-80"
@@ -66,7 +66,7 @@ const AccountPagination = ({
         }
         nextLabel={
           <div
-            className={`opacity-50 flex items-center justify-center w-8 h-8 rounded-md text-lg border border-gray-500 dark:text-white hover:bg-gray-300 dark:hover:bg-primary-base duration-200 ${
+            className={`opacity-50 p-1 flex items-center justify-center w-8 h-8 rounded-md text-lg border border-gray-500 dark:text-white hover:bg-gray-300 dark:hover:bg-primary-base duration-200 ${
               searchValue?.page === totalPage
                 ? "opacity-40 cursor-not-allowed"
                 : "hover:opacity-80"
