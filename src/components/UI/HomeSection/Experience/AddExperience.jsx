@@ -58,7 +58,6 @@ const AddExperience = () => {
       if (data.photo) {
         formData.append("photo", data.photo);
       }
-      console.log(data, "data.......");
 
       const res = await createExperience(formData).unwrap();
 

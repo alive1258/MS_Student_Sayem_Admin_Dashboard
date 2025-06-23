@@ -127,9 +127,7 @@ const AllHomeHero = () => {
                   <th className="table_th">Name</th>
                   <th className="table_th">Class Name</th>
                   <th className="table_th">Course Name</th>
-
                   <th className="table_th">description</th>
-
                   <th className="table_th text-center">Action</th>
                 </tr>
               </thead>

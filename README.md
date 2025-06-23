@@ -41,31 +41,11 @@ npm run dev
 
 ## Features to Implement
 
-- Add new product (Fields: name, code, price, stockQty)
+- Add new
 
-- View list of products
+- View list o
 
-- Search product by name or code
-
-## POS / Sales System
-
-- Add product to cart from search results
-
-- Increment/decrement quantity in cart
-
-- Display total price in cart
-
-## Checkout:
-
-    - Submit cart data to backend
-
-    - Reduce product stock based on cart
-
-    - Show success message
-
-    - Reset cart
-
-    - Remove item from cart
+- Search
 
 ## Frontend Technologies Used
 

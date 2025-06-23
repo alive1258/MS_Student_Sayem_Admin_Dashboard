@@ -1,7 +1,12 @@
+import AllCollaborating from "@/components/UI/HomeSection/Collaborating/AllCollaborating";
 import React from "react";
 
 const page = () => {
-  return <div></div>;
+  return (
+    <>
+      <AllCollaborating />
+    </>
+  );
 };
 
 export default page;

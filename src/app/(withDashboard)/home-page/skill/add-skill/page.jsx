@@ -1,7 +1,12 @@
+import AddSkill from "@/components/UI/HomeSection/Skills/AddSkill";
 import React from "react";
 
 const page = () => {
-  return <div></div>;
+  return (
+    <>
+      <AddSkill />
+    </>
+  );
 };
 
 export default page;

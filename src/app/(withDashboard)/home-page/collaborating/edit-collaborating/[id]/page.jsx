@@ -1,7 +1,13 @@
+import EditCollaborating from "@/components/UI/HomeSection/Collaborating/EditCollaborating";
 import React from "react";
 
-const page = () => {
-  return <div></div>;
+const page = async ({ params }) => {
+  const { id } = await params;
+  return (
+    <>
+      <EditCollaborating id={id} />
+    </>
+  );
 };
 
 export default page;

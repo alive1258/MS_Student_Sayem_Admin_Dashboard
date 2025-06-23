@@ -111,7 +111,6 @@ const EditProject = ({ id }) => {
       if (data.thumbnail) {
         formData.append("thumbnail", data.thumbnail);
       }
-
       const res = await updateHomeAbout({ id, data: formData }).unwrap(); // ✅ FIXED
 
       if (res?.success) {
@@ -140,13 +139,13 @@ const EditProject = ({ id }) => {
     <section className="md:px-6 px-4 mt-6 rounded-lg">
       <div>
         <SectionTitle
-          big_title={"Edit Home Hero"}
-          title_one={"Home"}
+          big_title={"Edit Project "}
           link_one={"/"}
-          title_two={"All Home Hero"}
-          link_two={"/home-page/home-hero/all-home-heros"}
-          link_three={`/home-page/home-hero/edit-home-hero/${id}`}
-          title_three={"Edit Home Hero"}
+          title_one={"Home"}
+          link_two={"/projects/project/all-projects"}
+          title_two={"All Project"}
+          title_three={"Edit Project"}
+          link_three={"/projects/project/edit-project"}
         />
       </div>
 
