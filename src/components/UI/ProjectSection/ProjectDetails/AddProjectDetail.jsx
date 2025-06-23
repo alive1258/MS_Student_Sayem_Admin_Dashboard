@@ -1,23 +1,19 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import Image from "next/image";
 import SectionTitle from "@/components/common/SectionTitle/SectionTitle";
 import Input from "@/components/common/Forms/Input";
-import FileInput from "@/components/common/FileInput/FileInput";
-import TableSkeleton from "@/components/common/Loading/TableSkeleton";
 import Textarea from "@/components/common/Textarea/Textarea";
 import { IoClose } from "react-icons/io5";
 import FetchLoading from "@/components/common/Loading/FetchLoading";
 import { useGetAllProjectsQuery } from "@/redux/api/projectsApi";
-
 import SelectAndSearch from "@/components/common/SelectAndSearch/SelectAndSearch";
 import { useCreateProjectDetailDetailsMutation } from "@/redux/api/projectDetailsApi";
 
-const EditProjectDetail = ({ id }) => {
+const AddProjectDetail = () => {
   const {
     register,
     formState: { errors },
@@ -241,4 +237,4 @@ const EditProjectDetail = ({ id }) => {
   );
 };
 
-export default EditProjectDetail;
+export default AddProjectDetail;

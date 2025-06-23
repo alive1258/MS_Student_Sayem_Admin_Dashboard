@@ -314,24 +314,10 @@ export const SidebarItemsData = [
   },
 
   {
-    id: 8,
-    name: "Testimonials",
-    module_id: 1,
-    path: "/testimonials/all-testimonials",
-    Icon: <FaFeather size={20} />,
-  },
-  {
     id: 9,
     name: "Section Title & Description",
     module_id: 1,
     path: "/section-description/all-section-descriptions",
     Icon: <GiReturnArrow size={20} />,
-  },
-  {
-    id: 10,
-    name: "Faq Answers",
-    module_id: 1,
-    path: "/faq-answers/all-faq-answers",
-    Icon: <GiVerticalBanner size={20} />,
   },
 ];
