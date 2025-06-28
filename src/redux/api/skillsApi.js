@@ -10,7 +10,7 @@ export const skillsApi = baseApi.injectEndpoints({
       query: (data) => ({
         url: `${SKILLS_URL}`,
         method: "POST",
-        contentType: "multipart/form-data",
+
         data,
       }),
       invalidatesTags: [tagTypes.skills],
@@ -40,7 +40,7 @@ export const skillsApi = baseApi.injectEndpoints({
       query: ({ id, data }) => ({
         url: `${SKILLS_URL}/${id}`,
         method: "PATCH",
-        contentType: "multipart/form-data",
+
         data,
       }),
       invalidatesTags: [tagTypes.skills],

@@ -28,6 +28,7 @@ const AddSkill = () => {
   const skillsCategoryData = skillsCategoriesData?.data?.data;
 
   const onSubmit = async (data) => {
+    console.log(data, "data");
     try {
       propertiesToRemove?.forEach((property) => {
         delete data[property];
@@ -91,7 +92,6 @@ const AddSkill = () => {
             <Input
               placeholder="Enter Skills  Amount"
               text="skill_amount"
-              type="number"
               label="Skills  Amount"
               register={register}
               errors={errors}

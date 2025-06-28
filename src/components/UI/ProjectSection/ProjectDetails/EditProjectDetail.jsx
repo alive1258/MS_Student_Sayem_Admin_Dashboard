@@ -77,7 +77,8 @@ const EditProjectDetail = ({ id }) => {
     }
   };
 
-  const removePoint = (index) => {
+  const removePoint = (index, e) => {
+    e.preventDefault();
     setAddPoints((prev) => prev.filter((_, i) => i !== index));
   };
 
@@ -272,13 +273,13 @@ const EditProjectDetail = ({ id }) => {
             </div>
 
             <div className="flex flex-wrap gap-2 mt-3">
-              {addPoints.map((point, index) => (
+              {addPoints?.map((point, index) => (
                 <div key={index} className="group relative w-fit">
-                  <button className="input_style w-full relative">
+                  <button className="input_style relative flex items-center justify-center">
                     <span className="group-hover:invisible">{point}</span>
                     <IoClose
-                      onClick={() => removePoint(index)}
-                      className="absolute inset-0 p-2 text-white bg-red-600 rounded-md opacity-0 group-hover:opacity-100 transition"
+                      onClick={(e) => removePoint({ e, index })}
+                      className="w-full h-full absolute inset-0 p-2 cursor-pointer flex items-center justify-center text-white bg-red-600 rounded-md transition-opacity opacity-0 group-hover:opacity-100"
                     />
                   </button>
                 </div>

@@ -59,15 +59,15 @@ const AddResearchAndPublication = () => {
         reset();
         setAddTags([]);
         router.back();
-        toast.success("Research And Publication added successfully!", {
-          position: toast.POSITION.TOP_RIGHT,
+        toast.success("Research And Publication  added successfully!", {
+          position: toast.TOP_RIGHT,
         });
       } else {
-        toast.error(res.message, { position: toast.POSITION.TOP_RIGHT });
+        toast.error(res.message, { position: toast.TOP_RIGHT });
       }
     } catch (error) {
       toast.error(error?.message || "An error occurred", {
-        position: toast.POSITION.TOP_RIGHT,
+        position: toast.TOP_RIGHT,
       });
     }
   };

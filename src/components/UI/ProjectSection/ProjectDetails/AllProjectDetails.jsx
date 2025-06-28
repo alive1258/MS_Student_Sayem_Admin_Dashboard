@@ -58,6 +58,7 @@ const AllProjectDetails = () => {
             text: `The AllProjectDetail "${faq?.title}" has been successfully deleted.`,
             icon: "success",
           });
+          refetch();
         } else {
           Swal.fire({
             title: "Error!",

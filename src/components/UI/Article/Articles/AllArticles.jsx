@@ -42,7 +42,7 @@ const AllArticles = () => {
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
-        text: `Are you sure you want to delete the All Article"${faq?.name}"?`,
+        text: `Are you sure you want to delete the All Article"${faq?.article_title}"?`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -54,9 +54,10 @@ const AllArticles = () => {
         if (response?.success) {
           Swal.fire({
             title: "Deleted!",
-            text: `The AllArticle "${faq?.name}" has been successfully deleted.`,
+            text: `The AllArticle "${faq?.article_title}" has been successfully deleted.`,
             icon: "success",
           });
+          refetch();
         } else {
           Swal.fire({
             title: "Error!",

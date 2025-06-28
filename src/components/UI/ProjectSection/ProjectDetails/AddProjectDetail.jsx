@@ -227,7 +227,7 @@ const AddProjectDetail = () => {
 
             <div className="lg:col-span-2">
               <button disabled={isLoading} className="btn" type="submit">
-                {isLoading ? <FetchLoading /> : "Update Project"}
+                {isLoading ? <FetchLoading /> : "Add Project Details"}
               </button>
             </div>
           </div>
