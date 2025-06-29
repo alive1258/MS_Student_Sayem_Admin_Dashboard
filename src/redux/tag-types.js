@@ -26,6 +26,7 @@ export const tagTypes = {
   section_description: "section-description",
   research_and_publications: "research-and-publications",
   article_details: "article-details",
+  send_messages: "send-messages",
 };
 
 export const tagTypesList = [
@@ -56,4 +57,5 @@ export const tagTypesList = [
   tagTypes.section_description,
   tagTypes.research_and_publications,
   tagTypes.article_details,
+  tagTypes.send_messages,
 ];

@@ -160,13 +160,6 @@ export const SidebarItemsData = [
         module_id: 1,
         Icon: <LuLayoutTemplate size={20} />,
       },
-      {
-        id: 5,
-        name: "Email Settings",
-        path: "/email/email-settings",
-        module_id: 1,
-        Icon: <IoSettingsSharp size={20} />,
-      },
     ],
   },
   {
@@ -215,50 +208,7 @@ export const SidebarItemsData = [
       },
     ],
   },
-  {
-    id: 5,
-    name: "Experience Page",
-    module_id: 1,
-    path: "",
-    Icon: <FcSalesPerformance size={20} />,
-    sub: [
-      {
-        id: 1,
-        name: "Email Gateways",
-        path: "/email/email-gateways",
-        module_id: 1,
-        Icon: <MdFormatListNumbered size={20} />,
-      },
-      {
-        id: 2,
-        name: "Email Purchase",
-        path: "/email/email-purchase",
-        module_id: 1,
-        Icon: <FaSellcast size={20} />,
-      },
-      {
-        id: 3,
-        name: "Email Credits",
-        path: "/email/email-credits",
-        module_id: 1,
-        Icon: <MdFormatListNumbered size={20} />,
-      },
-      {
-        id: 4,
-        name: "Email Templates",
-        path: "/email/email-templates",
-        module_id: 1,
-        Icon: <LuLayoutTemplate size={20} />,
-      },
-      {
-        id: 5,
-        name: "Email Settings",
-        path: "/email/email-settings",
-        module_id: 1,
-        Icon: <IoSettingsSharp size={20} />,
-      },
-    ],
-  },
+
   {
     id: 6,
     name: "ECA Page",
@@ -318,6 +268,13 @@ export const SidebarItemsData = [
     name: "Section Title & Description",
     module_id: 1,
     path: "/section-description/all-section-descriptions",
+    Icon: <GiReturnArrow size={20} />,
+  },
+  {
+    id: 9,
+    name: "Inbox Message",
+    module_id: 1,
+    path: "/send-meaage/all-inbox-message",
     Icon: <GiReturnArrow size={20} />,
   },
 ];
