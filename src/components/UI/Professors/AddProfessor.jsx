@@ -9,9 +9,9 @@ import FetchLoading from "@/components/common/Loading/FetchLoading";
 import Textarea from "@/components/common/Textarea/Textarea";
 import FileInput from "@/components/common/FileInput/FileInput";
 import { IoClose } from "react-icons/io5";
-import { useCreateAboutMeMutation } from "@/redux/api/aboutMeApi";
+import { useCreateProfessorsMutation } from "@/redux/api/professorsApi";
 
-const AddAboutMe = () => {
+const AddProfessor = () => {
   const {
     register,
     formState: { errors },
@@ -21,7 +21,7 @@ const AddAboutMe = () => {
   } = useForm();
   const router = useRouter();
 
-  const [createAboutMe, { isLoading }] = useCreateAboutMeMutation();
+  const [createProfessor, { isLoading }] = useCreateProfessorsMutation();
   const [skillInput, setSkillInput] = useState("");
   const [addSkills, setAddSkills] = useState([]);
 
@@ -41,26 +41,27 @@ const AddAboutMe = () => {
   const onSubmit = async (data) => {
     try {
       const formData = new FormData();
+      formData.append("professor_name", data.professor_name);
+      formData.append("description", data.description);
       formData.append("title", data.title);
-      formData.append("sub_title", data.sub_title);
-      formData.append("cv_link", data.cv_link);
+      formData.append("institute", data.institute);
+      formData.append("department", data.department);
 
       addSkills.forEach((skill) => {
-        formData.append("skills", skill); // ✅ send each skill
+        formData.append("research_subject_title", skill);
       });
 
-      formData.append("description", data.description);
       if (data.photo) {
         formData.append("photo", data.photo);
       }
 
-      const res = await createAboutMe(formData).unwrap();
+      const res = await createProfessor(formData).unwrap();
 
       if (res?.success) {
         reset();
         setAddSkills([]);
         router.back();
-        toast.success("AboutMe  added successfully!", {
+        toast.success("Professor  added successfully!", {
           position: toast.TOP_RIGHT,
         });
       } else {
@@ -76,19 +77,26 @@ const AddAboutMe = () => {
   return (
     <section className="md:px-6 px-4 mt-6 pb-4 rounded-lg">
       <SectionTitle
-        big_title={"Add AboutMe "}
+        big_title={"Add Professor "}
         link_one={"/"}
         title_one={"Home"}
         link_two={"/about-page/about-me/all-about-me"}
-        title_two={"All AboutMe"}
-        title_three={"Add AboutMe"}
+        title_two={"All Professor"}
+        title_three={"Add Professor"}
         link_three={"/about-page/about-me/add-about-me"}
       />
 
       <div className="add_form_section mt-2">
-        <h1 className="add_section_title">Create AboutMe Step by Step</h1>
+        <h1 className="add_section_title">Create Professor Step by Step</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="mt-5 space-y-5">
           <div className="cart-group grid grid-cols-1 lg:grid-cols-2 items-end gap-y-2 gap-x-5">
+            <Input
+              placeholder="Enter Your professor_name"
+              text="professor_name"
+              label="Your professor_name"
+              register={register}
+              errors={errors}
+            />
             <Input
               placeholder="Enter Your title"
               text="title"
@@ -97,22 +105,22 @@ const AddAboutMe = () => {
               errors={errors}
             />
             <Input
-              placeholder="Enter Sub Title"
-              text="sub_title"
-              label="Sub Title"
+              placeholder="Enter institute"
+              text="institute"
+              label="institute"
               register={register}
+              errors={errors}
+            />
+            <Input
+              placeholder="Enter department"
+              text="department"
+              label="department"
+              register={register}
+              required={false}
               errors={errors}
             />
 
             <div className="md:col-span-2">
-              <Input
-                placeholder="Enter CV Link"
-                text="cv_link"
-                label="CV Link"
-                register={register}
-                required={false}
-                errors={errors}
-              />
               <Textarea
                 placeholder="Enter Description"
                 text="description"
@@ -132,10 +140,10 @@ const AddAboutMe = () => {
               />
               <div>
                 <label
-                  htmlFor="skills"
+                  htmlFor="research_subject_title"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Skills
+                  Research Subject Title
                 </label>
                 <div className="flex space-x-2 mt-1">
                   <input
@@ -181,4 +189,4 @@ const AddAboutMe = () => {
   );
 };
 
-export default AddAboutMe;
+export default AddProfessor;

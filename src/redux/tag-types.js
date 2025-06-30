@@ -27,6 +27,7 @@ export const tagTypes = {
   research_and_publications: "research-and-publications",
   article_details: "article-details",
   send_messages: "send-messages",
+  professors: "professors",
 };
 
 export const tagTypesList = [
@@ -58,4 +59,5 @@ export const tagTypesList = [
   tagTypes.research_and_publications,
   tagTypes.article_details,
   tagTypes.send_messages,
+  tagTypes.professors,
 ];

@@ -271,10 +271,17 @@ export const SidebarItemsData = [
     Icon: <GiReturnArrow size={20} />,
   },
   {
-    id: 9,
+    id: 10,
     name: "Inbox Message",
     module_id: 1,
     path: "/send-meaage/all-inbox-message",
+    Icon: <GiReturnArrow size={20} />,
+  },
+  {
+    id: 11,
+    name: "Professors",
+    module_id: 1,
+    path: "/professors/all-professors",
     Icon: <GiReturnArrow size={20} />,
   },
 ];
